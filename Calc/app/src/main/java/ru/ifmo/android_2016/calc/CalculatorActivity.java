@@ -68,7 +68,7 @@ public final class CalculatorActivity extends Activity {
 
     public void onClickSign(View view) {
         Button btn = (Button) view;
-        if (oper2 == 0 && operation == Operation.DIV || oper2 != 0) {
+        if (oper2 == 0 && operation == Operation.DIV && number.equals("0.0") || oper2 != 0) {
             ResultAction();
         }
         if (number.equals("Error")) {
@@ -97,9 +97,9 @@ public final class CalculatorActivity extends Activity {
     }
 
     public void onClickEquivalence(View view) {
-        if (!number.equals("Error")) {
+        if (!number.equals("Error") && operation != null) {
             ResultAction();
-        } else {
+        } else if (number.equals("Error")) {
             textError = "Error: please, enter expression!";
             window.setText(textError);
         }
